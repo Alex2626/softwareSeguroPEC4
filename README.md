@@ -13,6 +13,4 @@ PRUEBA5
 PRUEBA6
 
 ---------------------------
-PRUEBA1
-PRUEBA1
-leeme
+P
