@@ -35,8 +35,8 @@ pipeline {
             
             emailext body: '''Hello Alejandro,
             Your job ${BUILD_URL} changed state to ${currentBuild.result}.
-            Cheers,
-            Jenkins''', attachmentsPattern:'README.md' , attachLog: true, compressLog: true, subject: 'Reporte Job ${JOB_NAME} changed status', to: 'a.sanchezdev@alumnos.urjc.es'
+            
+            ''', attachmentsPattern:'README.md' , attachLog: true, compressLog: true, subject: 'Reporte Job ${JOB_NAME} changed status', to: 'a.sanchezdev@alumnos.urjc.es'
             
        }
        success{
