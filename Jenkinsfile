@@ -28,15 +28,14 @@ pipeline {
   }
   post {
        always {
+            emailext attachLog: true, attachmentsPattern: 'README.md', body: 'Your job ${BUILD_URL} changed state', compressLog: true, subject: 'Jenkins Tests', to: 'a.sanchezdev@alumnos.urjc.es'
             junit testResults: '**/target/surefire-reports/TEST-*.xml'
 
             recordIssues enabledForFailure: true, tools: [mavenConsole(), java(), javaDoc()]
             recordIssues enabledForFailure: true, tool: checkStyle()
             
-            emailext body: '''Hello Alejandro,
-            Your job ${BUILD_URL} changed state to ${currentBuild.result}.
             
-            ''', attachmentsPattern:'README.md' , attachLog: true, compressLog: true, subject: 'Reporte Job ${JOB_NAME} changed status', to: 'a.sanchezdev@alumnos.urjc.es'
+            
             
        }
        success{
