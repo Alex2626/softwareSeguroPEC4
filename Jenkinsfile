@@ -19,7 +19,10 @@ pipeline {
     }
     stage ('Analysis') {
             steps {
-                sh '${M2_HOME}/bin/mvn --batch-mode -V -U -e checkstyle:checkstyle '
+                
+                sh '${M2_HOME}/bin/mvn --batch-mode -V -U -e checkstyle:checkstyle spotbugs:spotbugs'
+                recordIssues sourceCodeEncoding: 'UTF-8', 
+                tool: groovyScript(parserId: 'groovy-id-in-system-config', pattern:'**/*report.log', reportEncoding:'UTF-8')
             }
         }
   }
